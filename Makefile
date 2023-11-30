@@ -19,3 +19,35 @@ docker-up:
 
 logs:
 	@${DOCKER_COMPOSE} logs -f
+
+#COMPOSER
+
+composer-require-backend:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} composer require ${PACKAGE}
+
+composer-remove-backend:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} composer remove ${PACKAGE}
+
+#MIGRATION
+
+create-migrations:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/console doctrine:migrations:diff
+
+execute-migrations:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/console doctrine:migrations:migrate
+
+#TEST
+
+tests-unit:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/phpunit --testsuite=unit
+
+tests-functional:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/phpunit --testsuite=functional
+
+#CODESTYLE
+
+fix-codestyle-dry:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/php-cs-fixer fix --dry-run --diff
+
+fix-codestyle:
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/php-cs-fixer fix
