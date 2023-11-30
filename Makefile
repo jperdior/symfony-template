@@ -39,10 +39,10 @@ execute-migrations:
 #TEST
 
 tests-unit:
-	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/phpunit --testsuite=unit
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/phpunit --testsuite=unit
 
 tests-functional:
-	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/phpunit --testsuite=functional
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/phpunit --testsuite=functional
 
 #CODESTYLE
 
