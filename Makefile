@@ -54,11 +54,11 @@ execute-migrations:
 
 #TEST
 
-tests-unit:
-	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/phpunit --testsuite=unit
+generate-test: ### Generate test. Example: make generate-test
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} vendor/bin/codecept generate:test ${SUITE} ${NAME}
 
-tests-functional:
-	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/phpunit --testsuite=functional
+tests-unit: ### Run unit tests. Example: make tests-unit
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} vendor/bin/codecept run Unit ${ARG}
 
 #CODESTYLE
 
