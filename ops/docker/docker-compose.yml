@@ -1,5 +1,3 @@
-version: "3.6"
-
 services:
 
 
@@ -15,20 +13,20 @@ services:
     depends_on:
       - database
 
-  mongo:
-    image: mongo:4.2.24-bionic
-    restart: always
-    volumes:
-      - mongo_db:/data/db
-    healthcheck:
-      test: mongo --eval "print(\"waited for connection\")"
-      interval: 5s
-      timeout: 10s
-      retries: 5
+   #mongo:
+   # image: mongo:4.2.24-bionic
+   # restart: always
+   # volumes:
+   #   - mongo_db:/data/db
+   # healthcheck:
+   #   test: mongo --eval "print(\"waited for connection\")"
+   #   interval: 5s
+   #   timeout: 10s
+   #   retries: 5
 
-  mongo-express:
-    image: mongo-express:0.54
-    restart: always
+  #mongo-express:
+  #  image: mongo-express:0.54
+  #  restart: always
 
 
   #  rabbitmq:

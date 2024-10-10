@@ -1,4 +1,4 @@
-export PROJECT_NAME := sequra
+export PROJECT_NAME := symfony-template
 export CURRENT_PATH := $(shell pwd)
 export BACKEND_CONTAINER := backend
 

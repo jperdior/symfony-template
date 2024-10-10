@@ -59,8 +59,8 @@ RUN php -r "unlink('composer-setup.php');"
 ## add pidfile to php-fpm
 RUN echo -e '[global]\npid = /app/php-fpm.pid' > /usr/local/etc/php-fpm.d/pid.conf
 
-RUN mkdir -p /var/lib/nginx/tmp/client_body/ \
-    && chown -R nginx:root /var/lib/nginx
+#RUN mkdir -p /var/lib/nginx/tmp/client_body/ \
+#    && chown -R nginx:root /var/lib/nginx
 
 
 ## entry point
