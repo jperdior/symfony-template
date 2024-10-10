@@ -1,7 +1,3 @@
-# Dockerized symfony template
+# Symfony template in DDD
 
-Run the following command to start the project:
-
-```bash
-make start
-```
+TODO: Add api platform
