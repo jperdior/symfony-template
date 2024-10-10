@@ -49,6 +49,12 @@ services:
       timeout: 10s
       retries: 5
 
+  #redis:
+  #  image: redis:alpine
+  #  ports:
+  #    - "6379:6379"
+  #  command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+
 #  vue:
 #    build:
 #      context: ../../code/frontend
