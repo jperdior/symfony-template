@@ -9,7 +9,7 @@ use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\Lock\LockInterface;
 use Symfony\Component\Lock\Store\FlockStore;
 
-final class Lock implements LockingInterface
+final class FileSystemLock implements LockingInterface
 {
     private LockFactory $lockFactory;
 

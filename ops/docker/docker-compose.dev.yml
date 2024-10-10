@@ -3,6 +3,8 @@ services:
   backend:
     ports:
       - "8080:8000"
+    environment:
+        - DATABASE_URL=mysql://root:verysecretpass@database:3306/symfony-template?serverVersion=mariadb-10.5.13
 
   #mongo:
   #  ports:

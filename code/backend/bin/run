@@ -23,6 +23,8 @@ while ! nc -z database 3306; do
   sleep 1
 done
 
+php bin/console doctrine:database:create --if-not-exists
+
 /app/bin/console cache:clear
 #chown -R www-data:www-data /app
 
