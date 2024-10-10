@@ -8,11 +8,6 @@ RESET=\033[0m
 
 .EXPORT_ALL_VARIABLES:
 
-.PHONY: debug
-debug:
-	@echo "UNAME: $(UNAME)"
-	@echo "PWD: $(PWD)"
-
 .PHONY: help
 help:
 ifeq ($(UNAME), Linux)
@@ -25,9 +20,9 @@ else
 endif
 
 
-restart: stop start
+restart: stop start ### Restart the project
 
-start: docker-build docker-up logs
+start: docker-build docker-up logs ### Start the project
 
 stop:
 	@${DOCKER_COMPOSE} down --remove-orphans
@@ -43,10 +38,10 @@ logs:
 
 #COMPOSER
 
-composer-require:
+composer-require: ### Install a composer package. Example: make composer-require PACKAGE=doctrine/doctrine-bundle
 	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} composer require ${PACKAGE}
 
-composer-remove:
+composer-remove: ### Remove a composer package. Example: make composer-remove PACKAGE=doctrine/doctrine-bundle
 	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} composer remove ${PACKAGE}
 
 #MIGRATION
@@ -67,8 +62,13 @@ tests-functional:
 
 #CODESTYLE
 
-fix-codestyle-dry:
+fix-codestyle-dry: ### Check code style. Example: make fix-codestyle-dry
 	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/php-cs-fixer fix --dry-run --diff
 
-fix-codestyle:
+fix-codestyle: ### Fix code style. Example: make fix-codestyle
 	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php vendor/bin/php-cs-fixer fix
+
+#UTILS
+
+run-action: ### Run the symfony cli command action
+	@${DOCKER_COMPOSE} exec ${BACKEND_CONTAINER} php bin/console app:action argument=Julio

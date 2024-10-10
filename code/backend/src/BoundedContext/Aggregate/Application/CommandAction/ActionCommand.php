@@ -8,8 +8,8 @@ use App\Shared\Domain\Bus\Command\Command;
 
 final readonly class ActionCommand implements Command
 {
-
     public function __construct(
         public string $argument
-    ){}
+    ) {
+    }
 }

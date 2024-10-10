@@ -31,9 +31,9 @@ class ActionCliCommand extends Command
     {
         $argument = $input->getArgument('argument');
 
-        $output->writeln('Hello ' . $argument);
+        $output->writeln('Hello '.$argument);
 
-        $this->commandBus->dispatch(new ActionCommand(argument:$argument));
+        $this->commandBus->dispatch(new ActionCommand(argument: $argument));
 
         return Command::SUCCESS;
     }

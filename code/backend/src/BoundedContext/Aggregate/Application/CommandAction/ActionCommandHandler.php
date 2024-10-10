@@ -11,8 +11,7 @@ final readonly class ActionCommandHandler
 {
     public function __construct(
         private Action $action,
-    )
-    {
+    ) {
     }
 
     public function __invoke(ActionCommand $command): void
